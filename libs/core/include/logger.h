@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 
-enum class LogLevel { Info, Warn, Error };
+enum class LogLevel { Info,
+     Warn,
+      Error };
 
 class Logger {
 public:

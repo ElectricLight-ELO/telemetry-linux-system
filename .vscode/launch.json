@@ -2,14 +2,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug hello (gdb)",
+            "name": "Debug exporter (debug)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/out/build/linux-debug/hello",
+            "program": "${workspaceFolder}/out/build/linux-debug/apps/exporter/exporter",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "EXPORTER_PORT",
+                    "value": "9100"
+                }
+            ],
             "externalConsole": false,
             "MIMode": "gdb",
             "miDebuggerPath": "/usr/bin/gdb",
@@ -28,10 +33,31 @@
             ]
         },
         {
-            "name": "Run hello (release)",
+            "name": "Debug watchdog (debug)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/out/build/linux-release/hello",
+            "program": "${workspaceFolder}/out/build/linux-debug/apps/watchdog/watchdog",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "cmake: build (debug)",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Run exporter (release)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/out/build/linux-release/apps/exporter/exporter",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
