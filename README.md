@@ -19,7 +19,7 @@
 
 ## Сборка и запуск
 
-Проект разрабатывается и тестируется в WSL2 (Ubuntu 22.04 / 24.04).
+Проект разрабатывается и тестируется в WSL2 / VPS Ubuntu 22.04 .
 
 ### Зависимости
 * C++20 (GCC 11+ / Clang 13+)
@@ -40,7 +40,7 @@ cmake --build build
 ./build/apps/watchdog/watchdog
 
 # Запуск тестов
-ctest --test-dir build --output-on-failure
+./cr_tests
 ```
 
 ## Статус разработки
@@ -49,6 +49,6 @@ ctest --test-dir build --output-on-failure
 - [x] Базовый модуль `core` (логгер, чтение ENV)
 - [ ] Интеграция `prometheus-cpp` в exporter
 - [ ] Реализация мониторинга процессов в watchdog
-- [ ] Покрытие `core` тестами (Boost.Test)
+- [x] Покрытие `core` тестами (Boost.Test)
 - [ ] Dockerfile / docker-compose (Prometheus + Grafana)
 - [ ] CI/CD (GitHub Actions)
