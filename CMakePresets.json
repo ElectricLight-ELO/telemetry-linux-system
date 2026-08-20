@@ -1,0 +1,52 @@
+{
+	"version": 3,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 20,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "linux-base",
+			"hidden": true,
+			"description": "Common settings for WSL Ubuntu targets",
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/out/build/${presetName}",
+			"cacheVariables": {
+				"CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+			}
+		},
+		{
+			"name": "linux-debug",
+			"displayName": "Linux Debug",
+			"description": "Unoptimized build with full debug info",
+			"inherits": "linux-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug",
+				"CMAKE_CXX_FLAGS_DEBUG": "-g3 -O0 -fno-omit-frame-pointer"
+			}
+		},
+		{
+			"name": "linux-release",
+			"displayName": "Linux Release",
+			"description": "Optimized build without debug info",
+			"inherits": "linux-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release",
+				"CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "linux-debug",
+			"displayName": "Linux Debug",
+			"configurePreset": "linux-debug"
+		},
+		{
+			"name": "linux-release",
+			"displayName": "Linux Release",
+			"configurePreset": "linux-release"
+		}
+	]
+}
